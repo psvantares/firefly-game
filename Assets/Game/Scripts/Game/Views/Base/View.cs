@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game.View.Base
+namespace Game
 {
     public class View : SafeArea
     {

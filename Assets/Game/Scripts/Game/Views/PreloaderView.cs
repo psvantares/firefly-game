@@ -3,9 +3,9 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-namespace Game.View
+namespace Game
 {
-    public class PreloaderView : Base.View
+    public class PreloaderView : View
     {
         [Header("TEXTS")]
         [SerializeField]
@@ -24,7 +24,7 @@ namespace Game.View
             for (var i = 0; i <= input.Length; i++)
             {
                 titleText.text = input[..i];
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.05f);
             }
 
             yield return new WaitForSeconds(0.75f);

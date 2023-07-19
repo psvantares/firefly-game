@@ -1,7 +1,6 @@
-﻿using Game.Data;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Game.Enemy
+namespace Game
 {
     public class EnemyOrbWeapon : MonoBehaviour
     {

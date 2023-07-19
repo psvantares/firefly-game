@@ -1,8 +1,7 @@
-﻿using Game.Data;
-using UnityEngine;
+﻿using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Game.Enemy
+namespace Game
 {
     public class EnemyMovement : MonoBehaviour
     {

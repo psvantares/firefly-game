@@ -1,7 +1,7 @@
 ﻿using Game.Components;
 using UnityEngine;
 
-namespace Game.Spawns
+namespace Game
 {
     public class StarsSpawner : MonoBehaviour
     {

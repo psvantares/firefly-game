@@ -2,9 +2,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game.View
+namespace Game
 {
-    public class MenuView : Base.View
+    public class MenuView : View
     {
         [Header("VIEWS")]
         [SerializeField]
@@ -51,6 +51,8 @@ namespace Game.View
             settingsView.OnClose -= HandleSettings;
             statisticView.OnClose -= HandleStatistic;
         }
+
+        // Events
 
         private void HandleSettings(bool active)
         {

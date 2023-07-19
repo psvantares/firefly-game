@@ -1,4 +1,4 @@
-namespace Game.Data
+namespace Game
 {
     public static class GameTag
     {

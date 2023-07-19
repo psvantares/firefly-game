@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections;
 using Game.Components;
-using Game.Data;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-namespace Game.Enemy
+namespace Game
 {
-    public class EnemyBase : MonoBehaviour
+    public class HazardBase : MonoBehaviour
     {
         [Header("GAME OBJECTS")]
         [SerializeField]
-        private GameObject explosion;
+        private GameObject hazardExplosion;
 
         [Header("COMPONENTS")]
         [SerializeField]
@@ -21,19 +21,31 @@ namespace Game.Enemy
 
         [Header("SETTINGS")]
         [SerializeField]
-        private int currentHealth;
+        private int maxHealth = 100;
 
         [SerializeField]
-        private int pointsValue;
+        private int currentHealth = 100;
+
+        [SerializeField]
+        private float rotationSpeedMin = 25f;
+
+        [SerializeField]
+        private float rotationSpeedMax = 75f;
+
+        [SerializeField]
+        private int pointsValue = 100;
+
+        [Header("AUDIO")]
+        [SerializeField]
+        private AudioSource hazardDestroySound;
 
         private Camera mainCamera;
 
-        public event Action<EnemyBase> OnClear;
+        private Vector2 min;
+
+        public event Action<HazardBase> OnClear;
         public event Action OnKill;
         public event Action<int> OnAddPoints;
-
-        private Vector2 min;
-        private const int MAX_HEALTH = 100;
 
         public int PointsValue
         {
@@ -51,42 +63,42 @@ namespace Game.Enemy
             }
         }
 
-        private void OnEnable()
-        {
-            currentHealth = MAX_HEALTH;
-        }
-
         private void Update()
         {
-            if (!(transform.position.y < min.y))
-            {
-                return;
-            }
+            transform.Rotate(0, 0, Random.Range(rotationSpeedMin, rotationSpeedMax) * Time.deltaTime);
 
-            OnClear?.Invoke(this);
+            if (currentHealth <= 0)
+            {
+                OnKill?.Invoke();
+                OnAddPoints?.Invoke(PointsValue);
+
+                floatingCombat.ShowCombatText();
+
+                PlayExplosion();
+                OnClear?.Invoke(this);
+            }
+            else if (transform.position.y < min.y)
+            {
+                OnClear?.Invoke(this);
+            }
+        }
+
+        private void OnEnable()
+        {
+            currentHealth = maxHealth;
         }
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            if (col.CompareTag(GameTag.PlayerShip) || col.CompareTag(GameTag.PlayerBullet))
+            if (col.CompareTag(GameTag.PlayerBullet))
             {
                 StartCoroutine(FlashSprite());
-                currentHealth -= 35;
 
-                switch (currentHealth)
-                {
-                    case > 0:
-                        return;
-                    case <= 0:
-                        OnKill?.Invoke();
-                        OnAddPoints?.Invoke(PointsValue);
-
-                        floatingCombat.ShowCombatText();
-
-                        PlayExplosion();
-                        Destroy(gameObject);
-                        break;
-                }
+                currentHealth -= 25;
+            }
+            else if (col.CompareTag(GameTag.PlayerShip))
+            {
+                currentHealth = 0;
             }
 
             if (!col.CompareTag(GameTag.Bomb))
@@ -99,7 +111,7 @@ namespace Game.Enemy
 
             OnAddPoints?.Invoke(PointsValue);
 
-            Destroy(gameObject);
+            OnClear?.Invoke(this);
         }
 
         private IEnumerator FlashSprite()
@@ -113,8 +125,13 @@ namespace Game.Enemy
 
         private void PlayExplosion()
         {
-            var instantiate = Instantiate(explosion);
-            instantiate.transform.position = transform.position;
+            var explosion = Instantiate(hazardExplosion);
+            explosion.transform.position = transform.position;
+
+            if (hazardDestroySound.clip != null)
+            {
+                hazardDestroySound.Play();
+            }
         }
     }
 }

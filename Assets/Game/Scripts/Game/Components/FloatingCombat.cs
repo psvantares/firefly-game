@@ -1,5 +1,4 @@
-﻿using Game.Enemy;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Game.Components
 {

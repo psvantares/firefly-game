@@ -1,9 +1,7 @@
 ﻿using System;
 using Game.Components;
-using Game.Models.Game;
-using Game.Player;
-using Game.Spawns;
-using Game.View;
+using Game.Models;
+using Game.Utilities;
 using UnityEngine;
 
 namespace Game.Controllers
@@ -163,9 +161,9 @@ namespace Game.Controllers
             var score = hudView.CurrentScore.ToString();
             var destroyed = hudView.CurrentDestroyedCount.ToString();
 
-            Prefs.Prefs.SetString("game_time", gameTime);
-            Prefs.Prefs.SetString("game_score", score);
-            Prefs.Prefs.SetString("game_destroyed", destroyed);
+            Storage.SetString("game_time", gameTime);
+            Storage.SetString("game_score", score);
+            Storage.SetString("game_destroyed", destroyed);
         }
 
         private void HandlePlay()

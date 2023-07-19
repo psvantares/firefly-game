@@ -2,9 +2,9 @@
 using TMPro;
 using UnityEngine;
 
-namespace Game.View
+namespace Game
 {
-    public class HudView : Base.View
+    public class HudView : View
     {
         [Header("TEXTS")]
         [SerializeField]

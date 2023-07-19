@@ -1,8 +1,6 @@
-﻿using Game.Data;
-using Game.Enemy.Ammo;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Game.Enemy
+namespace Game
 {
     public class EnemyWeapon : MonoBehaviour
     {

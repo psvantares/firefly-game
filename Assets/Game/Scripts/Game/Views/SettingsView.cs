@@ -1,10 +1,11 @@
 ﻿using System;
+using Game.Utilities;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game.View
+namespace Game
 {
-    public class SettingsView : Base.View
+    public class SettingsView : View
     {
         [Header("BUTTONS")]
         [SerializeField]
@@ -28,7 +29,7 @@ namespace Game.View
                 AudioListener.pause = !value;
                 isMusic = AudioListener.pause;
 
-                Prefs.Prefs.SetBool("game_music", isMusic);
+                Storage.SetBool("game_music", isMusic);
             });
         }
 
@@ -40,8 +41,8 @@ namespace Game.View
 
         public void Initialize()
         {
-            musicToggle.isOn = !Prefs.Prefs.GetBool("game_music");
-            AudioListener.pause = Prefs.Prefs.GetBool("game_music");
+            musicToggle.isOn = !Storage.GetBool("game_music");
+            AudioListener.pause = Storage.GetBool("game_music");
         }
     }
 }

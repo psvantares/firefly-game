@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Game.Spawns
+namespace Game
 {
     public class PowerUpSpawner : MonoBehaviour
     {

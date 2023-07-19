@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections;
-using Game.Enemy;
-using Game.Utilities.Pool;
+using Game.Utilities;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Game.Spawns
+namespace Game
 {
     public class HazardSpawner : MonoBehaviour
     {

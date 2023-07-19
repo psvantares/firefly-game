@@ -1,8 +1,7 @@
 ﻿using System;
-using Game.Data;
 using UnityEngine;
 
-namespace Game.Player
+namespace Game
 {
     public class PlayerBullet : MonoBehaviour
     {

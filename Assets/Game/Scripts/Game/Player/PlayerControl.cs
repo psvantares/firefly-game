@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections;
-using Game.Data;
-using Game.Utilities.Pool;
+using Game.Utilities;
 using TMPro;
 using UnityEngine;
 
-namespace Game.Player
+namespace Game
 {
     public class PlayerControl : MonoBehaviour
     {

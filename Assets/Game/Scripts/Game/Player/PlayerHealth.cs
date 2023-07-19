@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game.Player
+namespace Game
 {
     public class PlayerHealth : MonoBehaviour
     {

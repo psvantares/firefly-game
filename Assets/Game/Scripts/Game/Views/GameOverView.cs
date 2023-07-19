@@ -2,9 +2,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game.View
+namespace Game
 {
-    public class GameOverView : Base.View
+    public class GameOverView : View
     {
         [Header("BUTTONS")]
         [SerializeField]

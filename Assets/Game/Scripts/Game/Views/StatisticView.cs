@@ -1,11 +1,12 @@
 ﻿using System;
+using Game.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game.View
+namespace Game
 {
-    public class StatisticView : Base.View
+    public class StatisticView : View
     {
         [Header("BUTTONS")]
         [SerializeField]
@@ -35,9 +36,9 @@ namespace Game.View
 
         public void Initialize()
         {
-            gameTimeText.text = Prefs.Prefs.GetString("game_time", "00:00:00");
-            scoreText.text = Prefs.Prefs.GetString("game_score", "0");
-            destroyedText.text = Prefs.Prefs.GetString("game_destroyed", "0");
+            gameTimeText.text = Storage.GetString("game_time", "00:00:00");
+            scoreText.text = Storage.GetString("game_score", "0");
+            destroyedText.text = Storage.GetString("game_destroyed", "0");
         }
     }
 }

@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Game.Prefs
+namespace Game.Utilities
 {
-    public static class Prefs
+    public static class Storage
     {
         public static void SetBool(string key, bool value)
         {

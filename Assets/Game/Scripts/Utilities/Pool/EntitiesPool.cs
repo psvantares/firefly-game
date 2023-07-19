@@ -1,7 +1,7 @@
 using UniRx.Toolkit;
 using UnityEngine;
 
-namespace Game.Utilities.Pool
+namespace Game.Utilities
 {
     public class EntitiesPool<T> : ObjectPool<T> where T : Component
     {
