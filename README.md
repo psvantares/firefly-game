@@ -15,4 +15,4 @@
 * WebGL version - [link](https://psvantares.github.io/firefly-game-webgl/)
 
 ## Compatibility
-Corners game is written in Unity 2021. (iOS, Android, PC, WebGL)
+Firefly game is written in Unity 2021. (iOS, Android, PC, WebGL)
